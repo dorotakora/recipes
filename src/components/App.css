@@ -1,0 +1,9 @@
+.container input {
+  width: 50%;
+  margin: 20px;
+  padding: 10px 20px;
+  border: 2px solid gray;
+  background-color: #fff;
+  transition: .3s;
+}
+

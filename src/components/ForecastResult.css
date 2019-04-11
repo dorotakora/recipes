@@ -1,0 +1,41 @@
+.forecast {
+  position: relative;
+  margin-left: 50px;
+  margin-right: 50px;
+  padding-top: 20px;
+}
+
+.forecast h3, .result h4 {
+  font-weight: normal;
+}
+.forecast em {
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.forecast_current {
+  display: flex;
+  justify-content: center;
+}
+.forecast_current div {
+  margin: 20px;
+}
+.forecast_current:first-child {
+  margin-left: 30px;
+}
+.forecast_current img {
+  width: 100px;
+  height: 100px;
+  align-items: center;
+}
+
+.forecast_for7Days {
+  display: flex;
+  justify-content: center;
+  /*margin: 0 10px 0 10px;*/
+}
+.forecast_for7Days ul {
+  list-style: none;
+  text-align: center;
+}
+

@@ -1,0 +1,8 @@
+.searchCity {
+    width: 25%;
+    padding-left: 25%;
+}
+
+.searchCity input:focus {
+    border-color: #2bb8fb;
+}
