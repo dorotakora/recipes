@@ -26,50 +26,41 @@ class App extends Component {
     })
   };
 
+    handleSubmit = e => {
+        e.preventDefault();
+        const API = `http://api.apixu.com/v1/forecast.json?key=${APIKey}&q=${this.state.value}&days=7`;
 
+        fetch(API)
+            .then(response => {
+                if (response.ok) {
+                    return response
+                }
+                throw Error("Wystąpił błąd")
+            })
+            .then(response => response.json())
+            .then(data => {
+                this.setState(prevState => ({
+                    err: false,
+                    date: data.location.localtime,
+                    temp: data.current.temp_c,
+                    pressure: data.current.pressure_mb,
+                    wind: data.current.wind_mph,
+                    city: prevState.value,
+                    conditionIcon: data.current.condition.icon,
+                    conditionText: data.current.condition.text,
+                    forecastArray: data.forecast.forecastday,
+                    value: ''
+                }))
 
-    componentDidUpdate(prevProps, prevState) {
-
-        if (this.state.value.length === 0) return
-        if (prevState.value !== this.state.value) {
-
-            this.handleSubmit = e => {
-                e.preventDefault();
-
-                const API = `http://api.apixu.com/v1/forecast.json?key=${APIKey}&q=${this.state.value}&days=7`;
-
-                fetch(API)
-                    .then(response => {
-                        if (response.ok) {
-                            return response
-                        }
-                        throw Error("Wystąpił błąd")
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        this.setState(state => ({
-                            err: false,
-                            date: data.location.localtime,
-                            temp: data.current.temp_c,
-                            pressure: data.current.pressure_mb,
-                            wind: data.current.wind_mph,
-                            city: state.value,
-                            conditionIcon: data.current.condition.icon,
-                            conditionText: data.current.condition.text,
-                            forecastArray: data.forecast.forecastday,
-
-                        }))
-                    })
-                    .catch(err => {
-                        console.log(err);
-                        this.setState(prevState => ({
-                            err: true,
-                            city: prevState.value
-                        }))
-                    })
-            }
-            }
-    }
+            })
+            .catch(err => {
+                console.log(err);
+                this.setState(prevState => ({
+                    err: true,
+                    city: prevState.value
+                }))
+            })
+    };
 
   render() {
     return <div className="container">
