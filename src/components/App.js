@@ -28,7 +28,7 @@ class App extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        const API = `http://api.apixu.com/v1/forecast.json?key=${APIKey}&q=${this.state.value}&days=7`;
+        const API = `https://api.apixu.com/v1/forecast.json?key=${APIKey}&q=${this.state.value}&days=7`;
 
         fetch(API)
             .then(response => {
