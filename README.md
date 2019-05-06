@@ -1,4 +1,17 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+OpenWeatherMap
+Fetch method in practice - is a way to write asynchronous code
+
+Description
+Simple weather app utilizing weather API (http://api.apixu.com)
+
+This project was bootstrapped with Create React App.
+
+Screenshot
+
+
+Demo (GitHub Pages)
+This site is published at https://dorotakora.github.io/weather_api/
 
 ## Available Scripts
 
