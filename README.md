@@ -6,7 +6,7 @@ Description
 Simple weather app utilizing weather API (http://api.apixu.com)
 
 Screenshot
-/home/dorotakora/Pulpit/apiScreenShot.xcf
+![weather api](https://github.com/dorotakora/weather_api/raw/master/apiScreenShot.png)
 
 Demo (GitHub Pages)
 This site is published at https://dorotakora.github.io/weather_api/
