@@ -3,7 +3,7 @@ import SearchForm from './SearchForm';
 import ForecastResult from './ForecastResult';
 import './App.css';
 
-const APIKey = '1c968dd768e543bcae3163430191004';
+const APIKey = '837e046bf31e5cb351b5bf6ed80e01b6';
 
 class App extends Component {
 
@@ -16,8 +16,8 @@ class App extends Component {
     wind: '',
     err: false,
     conditionIcon: '',
-      conditionText: '',
-    forecastArray: ''
+    conditionText: '',
+    //forecastArray: ''
   };
 
   handleInputChange = e => {
@@ -28,7 +28,7 @@ class App extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        const API = `https://api.apixu.com/v1/forecast.json?key=${APIKey}&q=${this.state.value}&days=7`;
+        const API = `http://api.weatherstack.com/current?access_key=${APIKey}&query=${this.state.value}`; //&days=7
 
         fetch(API)
             .then(response => {
@@ -42,13 +42,13 @@ class App extends Component {
                 this.setState(prevState => ({
                     err: false,
                     date: data.location.localtime,
-                    temp: data.current.temp_c,
-                    pressure: data.current.pressure_mb,
-                    wind: data.current.wind_mph,
+                    temp: data.current.temperature,
+                    pressure: data.current.pressure,
+                    wind: data.current.wind_speed,
                     city: prevState.value,
-                    conditionIcon: data.current.condition.icon,
-                    conditionText: data.current.condition.text,
-                    forecastArray: data.forecast.forecastday,
+                    conditionIcon: data.current.weather_icons,
+                    conditionText: data.current.weather_descriptions,
+                    // forecastArray: data.forecast.forecastday,
                     value: ''
                 }))
 
