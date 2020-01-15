@@ -3,7 +3,7 @@ import SearchForm from './SearchForm';
 import ForecastResult from './ForecastResult';
 import './App.css';
 
-const APIKey = '837e046bf31e5cb351b5bf6ed80e01b6';
+const APIKey = '9161a3616ae201c026ff6383e35a0198';
 
 class App extends Component {
 
@@ -15,8 +15,8 @@ class App extends Component {
     pressure: '',
     wind: '',
     err: false,
-    conditionIcon: '',
-    conditionText: '',
+   // conditionIcon: '',
+    //conditionText: '',
     //forecastArray: ''
   };
 
@@ -28,7 +28,7 @@ class App extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        const API = `http://api.weatherstack.com/current?access_key=${APIKey}&query=${this.state.value}`; //&days=7
+        const API = `http://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&units=metric&APPID=${APIKey}`; 
 
         fetch(API)
             .then(response => {
@@ -39,15 +39,17 @@ class App extends Component {
             })
             .then(response => response.json())
             .then(data => {
+              console.log(data)
                 this.setState(prevState => ({
+                 
                     err: false,
-                    date: data.location.localtime,
-                    temp: data.current.temperature,
-                    pressure: data.current.pressure,
-                    wind: data.current.wind_speed,
+                    date: data.sys.sunrise,
+                    temp: data.main.temp,
+                    pressure: data.main.pressure,
+                    wind: data.wind.speed,
                     city: prevState.value,
-                    conditionIcon: data.current.weather_icons,
-                    conditionText: data.current.weather_descriptions,
+                    //conditionIcon: data.current.weather_icons,
+                    //conditionText: data.current.weather_descriptions,
                     // forecastArray: data.forecast.forecastday,
                     value: ''
                 }))
