@@ -1,16 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-Fetch method in practice - is a way to write asynchronous code
-
-Description
-Simple weather app utilizing weather API (http://api.apixu.com)
-
-Screenshot
-![weather api](https://github.com/dorotakora/weather_api/raw/master/apiScreenShot.png)
-
-Demo (GitHub Pages)
-This site is published at https://dorotakora.github.io/weather_api/
-
 ## Available Scripts
 
 In the project directory, you can run:

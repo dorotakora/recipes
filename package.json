@@ -1,13 +1,18 @@
 {
-  "homepage": "https://dorotakora.github.io/weather_api/",
-  "name": "app-pogoda",
+
+  "name": "app-recipes",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@progress/kendo-react-dialogs": "^3.10.1",
+    "@progress/kendo-theme-default": "^4.12.0",
     "gh-pages": "^2.0.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-scripts": "2.1.3"
+    "react-scripts": "2.1.3",
+    "react-select": "^3.0.8",
+    "react-uuid": "^1.0.2",
+    "semantic-ui-react": "^0.88.2"
   },
   "scripts": {
     "predeploy": "npm run build",

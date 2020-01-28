@@ -1,0 +1,63 @@
+.ingredients-list {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: rgba(255,255,255,0.75);
+  min-height: calc(100% - 5em);
+  box-sizing: border-box;
+}
+
+.ingredients-item {
+  display: flex; 
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color: rgba(255,255,255,0.8);
+  width: 20em;
+  height: 15em;
+  margin: 1em;;
+}
+
+.ingredient-link {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5em;
+}
+
+.ingredients-list a {
+  text-decoration: none;
+  color:  black;
+  font-size: 1.2em;
+}
+
+.ingredient-properties {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: calc(100% - 2em);
+  padding: 1em;
+  flex-grow: 2;
+}
+
+.ingredient-img {
+  width: 6em;
+  height: 6em;
+  border-radius: 50%;
+  margin-right: 1em;
+}
+
+.ingredient-img img {
+  width: 6em;
+  height: 6em;
+  border-radius: 50%;
+}
+
+.ingredient-tags {
+  overflow-y: auto;
+  width: 100%;
+}

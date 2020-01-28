@@ -1,35 +1,30 @@
 import React, { Component } from 'react';
 import SearchForm from './SearchForm';
-import ForecastResult from './ForecastResult';
 import './App.css';
-
-const APIKey = '837e046bf31e5cb351b5bf6ed80e01b6';
 
 class App extends Component {
 
   state = {
     value: '',
-    date: '',
-    city: '',
-    temp: '',
-    pressure: '',
-    wind: '',
-    err: false,
-    conditionIcon: '',
-    conditionText: '',
-    //forecastArray: ''
+    recipes: [],
+    err: false
   };
 
   handleInputChange = e => {
+    let oldValue = this.state.value;
+    let newValue = e.target.value ? `${e.target.value}` : oldValue + ` ${e.target.innerHTML}`;
     this.setState({
-      value: e.target.value
+        value: newValue
     })
-  };
+  }; 
+
+
 
     handleSubmit = e => {
         e.preventDefault();
-        const API = `http://api.weatherstack.com/current?access_key=${APIKey}&query=${this.state.value}`; //&days=7
-
+        let value = this.state.value.replace(/ /g, ",").replace(/^,|,$/g,'');
+    
+        const API = `https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?i=${value}&p=10`
         fetch(API)
             .then(response => {
                 if (response.ok) {
@@ -39,35 +34,31 @@ class App extends Component {
             })
             .then(response => response.json())
             .then(data => {
-                this.setState(prevState => ({
-                    err: false,
-                    date: data.location.localtime,
-                    temp: data.current.temperature,
-                    pressure: data.current.pressure,
-                    wind: data.current.wind_speed,
-                    city: prevState.value,
-                    conditionIcon: data.current.weather_icons,
-                    conditionText: data.current.weather_descriptions,
-                    // forecastArray: data.forecast.forecastday,
-                    value: ''
-                }))
-
+              
+                this.setState(state => {
+                  let recipes = data.results;
+                    return {
+                      recipes
+                    }
+                })  
             })
             .catch(err => {
                 console.log(err);
                 this.setState(prevState => ({
-                    err: true,
-                    city: prevState.value
+                    err: true
                 }))
-            })
+            });
     };
+
+     
+
 
   render() {
     return <div className="container">
             <SearchForm value={this.state.value}
                         change={this.handleInputChange}
-                        submit={this.handleSubmit}/>
-             <ForecastResult forecast={this.state} />
+                        submit={this.handleSubmit}
+                        recipes={this.state.recipes}/>
           </div>
   }
 }
